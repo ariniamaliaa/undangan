@@ -18,39 +18,87 @@ if(isset($_POST['simpan'])){
     header("Location:index.php");
 }
 ?>
-<style>
-body{
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
 
-form{
-    width: 300px;
-    margin: auto;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Pesanan</title>
 
-input, select{
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-</style>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-<h2>Tambah Pesanan</h2>
+    body{
+        font-family:Arial, sans-serif;
+        background:linear-gradient(135deg,#ffe4ec,#fff8f0);
+    }
+
+    .container{
+        width:420px;
+        margin:50px auto;
+        background:white;
+        padding:25px;
+        border-radius:15px;
+        box-shadow:0 0 15px rgba(0,0,0,0.2);
+    }
+
+    h2{
+        text-align:center;
+        color:#d63384;
+        margin-bottom:20px;
+    }
+
+    label{
+        display:block;
+        margin-bottom:5px;
+        font-weight:bold;
+    }
+
+    input,select{
+        width:100%;
+        padding:10px;
+        margin-bottom:15px;
+        border:1px solid #ccc;
+        border-radius:8px;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        background:#d63384;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    }
+
+    button:hover{
+        background:#b02a6f;
+    }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>💍 Tambah Pesanan 💍</h2>
 
 <form method="POST">
 
-Nama Pengantin <br>
-<input type="text" name="nama"><br><br>
+<label>Nama Pengantin</label>
+<input type="text" name="nama">
 
-Tanggal Nikah <br>
-<input type="date" name="tanggal"><br><br>
+<label>Tanggal Nikah</label>
+<input type="date" name="tanggal">
 
-Lokasi <br>
-<input type="text" name="lokasi"><br><br>
+<label>Lokasi</label>
+<input type="text" name="lokasi">
 
-Paket <br>
+<label>Paket</label>
 <select name="paket" onchange="isiHarga(this)">
     <option value="">Pilih Paket</option>
     <option value="Silver" data-harga="500000">Silver</option>
@@ -58,12 +106,14 @@ Paket <br>
     <option value="Platinum" data-harga="1500000">Platinum</option>
 </select>
 
-Harga <br>
-<input type="number" name="harga" id="harga"><br><br>
+<label>Harga</label>
+<input type="number" name="harga" id="harga">
 
 <button name="simpan">Simpan</button>
 
 </form>
+
+</div>
 
 <script>
 function isiHarga(select){
@@ -71,3 +121,6 @@ function isiHarga(select){
     document.getElementById("harga").value = harga;
 }
 </script>
+
+</body>
+</html>
