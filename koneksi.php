@@ -1,15 +1,23 @@
 <?php
-// Buka panel InfinityFree, masuk ke menu "MySQL Databases"
-// Masukkan data sesuai yang ada di sana, jangan gunakan localhost!
-$host = "sql213.infinityfree.com"; // Pastikan ini sesuai dengan "MySQL Hostname" di panel
-$user = "if0_42200847";            // "MySQL Username"
-$pass = "gv2qGXOjkz";  // Password database yang kamu set
-$db   = "if0_42200847_db_undangan"; // "Database Name"
+// Konfigurasi Database InfinityFree Anda
+$host = "sql213.infinityfree.com";
+$user = "if0_42200847";
+$pass = "gv2qGXOjKz"; // << PASTIKAN ini adalah password akun cPanel/vPanel Anda!
+$db   = "if0_42200847_db_undangan";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+// Mengaktifkan pelaporan error bawaan PHP (sangat membantu saat proses development)
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-// Cek apakah koneksi berhasil
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
+try {
+    // Mencoba melakukan koneksi ke server MySQL
+    $conn = mysqli_connect($host, $user, $pass, $db);
+    
+    // Set charset ke utf8 agar pembacaan teks/karakter unik tidak error
+    mysqli_set_charset($conn, "utf8");
+
+} catch (Exception $e) {
+    // Jika koneksi gagal, kode di bawah ini akan menghentikan loading website 
+    // dan langsung menampilkan penyebab error yang sebenarnya di layar browser.
+    die("Gagal terhubung ke database. Pesan Error: " . $e->getMessage());
 }
 ?>
