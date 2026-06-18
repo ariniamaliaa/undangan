@@ -99,8 +99,8 @@ button:hover{
 <body>
 
 <div class="container">
-
-<h2>💍 Edit Pesanan 💍</h2>
+    
+<h2 style="color:red;">INI FILE BARU</h2>
 
 <form method="POST">
 
